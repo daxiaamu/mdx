@@ -99,6 +99,7 @@ $mdx_default_values = array(
     'mdx_side_head' => '',
     'mdx_side_name' => '',
     'mdx_side_more' => '',
+    'mdx_index_say_enabled' => 'true',
     'mdx_index_say' => 'Hello => MDx!',
     'mdx_index_say_size' => '1',
     'mdx_say_after' => '',

@@ -55,75 +55,83 @@ wp_enqueue_script( 'wp-color-picker' );
 			'orange'      => '#ffab40',
 			'deep-orange' => '#ff6e40',
 		);
-		mdx_update_option( 'mdx_styles', sanitize_text_field( $_POST['mdx_styles'] ) );
-		mdx_update_option( 'mdx_styles_hex', $mdx_color_arr[ sanitize_text_field( $_POST['mdx_styles'] ) ] );
-		mdx_update_option( 'mdx_styles_act', sanitize_text_field( $_POST['mdx_styles_act'] ) );
-		mdx_update_option( 'mdx_act_hex', $mdx_act_arr[ sanitize_text_field( $_POST['mdx_styles_act'] ) ] );
-		mdx_update_option( 'mdx_styles_dark', sanitize_text_field( $_POST['mdx_styles_dark'] ) );
-		if ( $_POST['mdx_styles_dark'] !== "disable" ) {
+		$mdx_post_value = static function ( $key, $fallback = null ) {
+			if ( isset( $_POST[ $key ] ) && ! is_array( $_POST[ $key ] ) ) {
+				return $_POST[ $key ];
+			}
+
+			return null === $fallback ? mdx_get_option( $key ) : $fallback;
+		};
+		mdx_update_option( 'mdx_styles', sanitize_text_field( $mdx_post_value( 'mdx_styles' ) ) );
+		mdx_update_option( 'mdx_styles_hex', $mdx_color_arr[ sanitize_text_field( $mdx_post_value( 'mdx_styles' ) ) ] );
+		mdx_update_option( 'mdx_styles_act', sanitize_text_field( $mdx_post_value( 'mdx_styles_act' ) ) );
+		mdx_update_option( 'mdx_act_hex', $mdx_act_arr[ sanitize_text_field( $mdx_post_value( 'mdx_styles_act' ) ) ] );
+		mdx_update_option( 'mdx_styles_dark', sanitize_text_field( $mdx_post_value( 'mdx_styles_dark' ) ) );
+		if ( $mdx_post_value( 'mdx_styles_dark' ) !== "disable" ) {
 			mdx_update_option( 'mdx_night_style', 'false' );
 			mdx_update_option( 'mdx_auto_night_style', 'false' );
 		}
-		mdx_update_option( 'mdx_md2', $_POST['mdx_md2'] );
-		$md2_font = sanitize_text_field( $_POST['mdx_md2_font'] );
+		mdx_update_option( 'mdx_md2', $mdx_post_value( 'mdx_md2' ) );
+		$md2_font = sanitize_text_field( $mdx_post_value( 'mdx_md2_font', 'false' ) );
 		if ( isset( $md2_font ) ) {
 			mdx_update_option( 'mdx_md2_font', $md2_font );
 		} else {
 			mdx_update_option( 'mdx_md2_font', 'false' );
 		}
-		mdx_update_option( 'mdx_login_md', sanitize_text_field( $_POST['mdx_login_md'] ) );
-		mdx_update_option( 'mdx_chrome_color', sanitize_text_field( $_POST['mdx_chrome_color'] ) );
-		mdx_update_option( 'mdx_title_bar', sanitize_text_field( $_POST['mdx_title_bar'] ) );
-		mdx_update_option( 'mdx_tap_to_top', sanitize_text_field( $_POST['mdx_tap_to_top'] ) );
-		mdx_update_option( 'mdx_default_style', sanitize_text_field( $_POST['mdx_default_style'] ) );
-		mdx_update_option( 'mdx_index_show', sanitize_text_field( $_POST['mdx_index_show'] ) );
-		mdx_update_option( 'mdx_post_style', sanitize_text_field( $_POST['mdx_post_style'] ) );
-		mdx_update_option( 'mdx_post_time_positon', sanitize_text_field( $_POST['mdx_post_time_positon'] ) );
-		mdx_update_option( 'mdx_post_nav_style', sanitize_text_field( $_POST['mdx_post_nav_style'] ) );
-		mdx_update_option( 'mdx_post_list_width', sanitize_text_field( $_POST['mdx_post_list_width'] ) );
-		mdx_update_option( 'mdx_echo_post_sum', sanitize_text_field( $_POST['mdx_echo_post_sum'] ) );
-		mdx_update_option( 'mdx_post_list_img_height', sanitize_text_field( $_POST['mdx_post_list_img_height'] ) );
-		mdx_update_option( 'mdx_post_def_img', sanitize_text_field( $_POST['mdx_post_def_img'] ) );
-		if ( $_POST['mdx_post_def_img_url'] === '' ) {
+		mdx_update_option( 'mdx_login_md', sanitize_text_field( $mdx_post_value( 'mdx_login_md' ) ) );
+		mdx_update_option( 'mdx_chrome_color', sanitize_text_field( $mdx_post_value( 'mdx_chrome_color' ) ) );
+		mdx_update_option( 'mdx_title_bar', sanitize_text_field( $mdx_post_value( 'mdx_title_bar' ) ) );
+		mdx_update_option( 'mdx_tap_to_top', sanitize_text_field( $mdx_post_value( 'mdx_tap_to_top' ) ) );
+		mdx_update_option( 'mdx_default_style', sanitize_text_field( $mdx_post_value( 'mdx_default_style' ) ) );
+		mdx_update_option( 'mdx_index_show', sanitize_text_field( $mdx_post_value( 'mdx_index_show' ) ) );
+		mdx_update_option( 'mdx_post_style', sanitize_text_field( $mdx_post_value( 'mdx_post_style' ) ) );
+		mdx_update_option( 'mdx_post_time_positon', sanitize_text_field( $mdx_post_value( 'mdx_post_time_positon' ) ) );
+		mdx_update_option( 'mdx_post_nav_style', sanitize_text_field( $mdx_post_value( 'mdx_post_nav_style' ) ) );
+		mdx_update_option( 'mdx_post_list_width', sanitize_text_field( $mdx_post_value( 'mdx_post_list_width' ) ) );
+		mdx_update_option( 'mdx_echo_post_sum', sanitize_text_field( $mdx_post_value( 'mdx_echo_post_sum' ) ) );
+		mdx_update_option( 'mdx_post_list_img_height', sanitize_text_field( $mdx_post_value( 'mdx_post_list_img_height' ) ) );
+		mdx_update_option( 'mdx_post_def_img', sanitize_text_field( $mdx_post_value( 'mdx_post_def_img' ) ) );
+		if ( $mdx_post_value( 'mdx_post_def_img_url' ) === '' ) {
 			global $files_root;
 			mdx_update_option( 'mdx_post_def_img_url', esc_url_raw( $files_root . '/img/dpic.jpg' ) );
 		} else {
-			mdx_update_option( 'mdx_post_def_img_url', esc_url_raw( $_POST['mdx_post_def_img_url'] ) );
+			mdx_update_option( 'mdx_post_def_img_url', esc_url_raw( $mdx_post_value( 'mdx_post_def_img_url' ) ) );
 		}
-		mdx_update_option( 'mdx_gravatar_actived', sanitize_text_field( $_POST['mdx_gravatar_actived'] ) );
-		mdx_update_option( 'mdx_link_rand_order', sanitize_text_field( $_POST['mdx_link_rand_order'] ) );
-		mdx_update_option( 'mdx_title_med', sanitize_text_field( $_POST['mdx_title_med'] ) );
-		mdx_update_option( 'mdx_index_head_style', sanitize_text_field( $_POST['mdx_index_head_style'] ) );
-		mdx_update_option( 'mdx_index_slide_posts_style', sanitize_text_field( $_POST['mdx_index_slide_posts_style'] ) );
-		mdx_update_option( 'mdx_index_slide_posts_num', sanitize_text_field( $_POST['mdx_index_slide_posts_num'] ) );
-		mdx_update_option( 'mdx_index_slide_interval', sanitize_text_field( $_POST['mdx_index_slide_interval'] ) );
-		mdx_update_option( 'mdx_index_slide_posts_get', sanitize_text_field( $_POST['mdx_index_slide_posts_get'] ) );
-		mdx_update_option( 'mdx_index_slide_posts_cat', sanitize_text_field( $_POST['mdx_index_slide_posts_cat'] ) );
-		mdx_update_option( 'mdx_index_img', sanitize_text_field( $_POST['mdx_index_img'] ) );
-		mdx_update_option( 'mdx_index_img_bg', sanitize_text_field( $_POST['mdx_index_img_bg'] ) );
-		mdx_update_option( 'mdx_side_img', esc_url_raw( $_POST['mdx_side_img'] ) );
-		mdx_update_option( 'mdx_side_info', sanitize_text_field( $_POST['mdx_side_info'] ) );
-		mdx_update_option( 'mdx_side_head', esc_url_raw( $_POST['mdx_side_head'] ) );
-		mdx_update_option( 'mdx_side_name', htmlentities( stripslashes( $_POST['mdx_side_name'] ) ) );
-		mdx_update_option( 'mdx_side_more', htmlentities( stripslashes( $_POST['mdx_side_more'] ) ) );
-		mdx_update_option( 'mdx_index_say', htmlentities( stripslashes( $_POST['mdx_index_say'] ) ) );
-		mdx_update_option( 'mdx_index_say_size', sanitize_text_field( $_POST['mdx_index_say_size'] ) );
-		mdx_update_option( 'mdx_say_after', htmlentities( stripslashes( $_POST['mdx_say_after'] ) ) );
-		mdx_update_option( 'mdx_logo_way', sanitize_text_field( $_POST['mdx_logo_way'] ) );
-		mdx_update_option( 'mdx_logo', esc_url_raw( $_POST['mdx_logo'] ) );
-		mdx_update_option( 'mdx_logo_text', sanitize_text_field( $_POST['mdx_logo_text'] ) );
-		mdx_update_option( 'mdx_safari', sanitize_text_field( $_POST['mdx_safari'] ) );
-		mdx_update_option( 'mdx_svg', esc_url_raw( $_POST['mdx_svg'] ) );
-		mdx_update_option( 'mdx_svg_color', sanitize_text_field( $_POST['mdx_svg_color'] ) );
-		mdx_update_option( 'mdx_tags_color', sanitize_text_field( $_POST['mdx_tags_color'] ) );
-		mdx_update_option( 'mdx_styles_footer', sanitize_text_field( $_POST['mdx_styles_footer'] ) );
-		if ( $_POST['mdx_footer_say'] === 'jkrQnlLIIa6K4b$DuR' ) {
+		mdx_update_option( 'mdx_gravatar_actived', sanitize_text_field( $mdx_post_value( 'mdx_gravatar_actived' ) ) );
+		mdx_update_option( 'mdx_link_rand_order', sanitize_text_field( $mdx_post_value( 'mdx_link_rand_order' ) ) );
+		mdx_update_option( 'mdx_title_med', sanitize_text_field( $mdx_post_value( 'mdx_title_med' ) ) );
+		mdx_update_option( 'mdx_index_head_style', sanitize_text_field( $mdx_post_value( 'mdx_index_head_style' ) ) );
+		mdx_update_option( 'mdx_index_slide_posts_style', sanitize_text_field( $mdx_post_value( 'mdx_index_slide_posts_style' ) ) );
+		mdx_update_option( 'mdx_index_slide_posts_num', sanitize_text_field( $mdx_post_value( 'mdx_index_slide_posts_num' ) ) );
+		mdx_update_option( 'mdx_index_slide_interval', sanitize_text_field( $mdx_post_value( 'mdx_index_slide_interval' ) ) );
+		mdx_update_option( 'mdx_index_slide_posts_get', sanitize_text_field( $mdx_post_value( 'mdx_index_slide_posts_get' ) ) );
+		mdx_update_option( 'mdx_index_slide_posts_cat', sanitize_text_field( $mdx_post_value( 'mdx_index_slide_posts_cat' ) ) );
+		mdx_update_option( 'mdx_index_img', sanitize_text_field( $mdx_post_value( 'mdx_index_img' ) ) );
+		mdx_update_option( 'mdx_index_img_bg', sanitize_text_field( $mdx_post_value( 'mdx_index_img_bg' ) ) );
+		mdx_update_option( 'mdx_side_img', esc_url_raw( $mdx_post_value( 'mdx_side_img' ) ) );
+		mdx_update_option( 'mdx_side_info', sanitize_text_field( $mdx_post_value( 'mdx_side_info' ) ) );
+		mdx_update_option( 'mdx_side_head', esc_url_raw( $mdx_post_value( 'mdx_side_head' ) ) );
+		mdx_update_option( 'mdx_side_name', htmlentities( stripslashes( $mdx_post_value( 'mdx_side_name' ) ) ) );
+		mdx_update_option( 'mdx_side_more', htmlentities( stripslashes( $mdx_post_value( 'mdx_side_more' ) ) ) );
+		mdx_update_option( 'mdx_index_say_enabled', sanitize_text_field( $mdx_post_value( 'mdx_index_say_enabled' ) ) );
+		mdx_update_option( 'mdx_index_say', htmlentities( stripslashes( $mdx_post_value( 'mdx_index_say' ) ) ) );
+		mdx_update_option( 'mdx_index_say_size', sanitize_text_field( $mdx_post_value( 'mdx_index_say_size' ) ) );
+		mdx_update_option( 'mdx_say_after', htmlentities( stripslashes( $mdx_post_value( 'mdx_say_after' ) ) ) );
+		mdx_update_option( 'mdx_logo_way', sanitize_text_field( $mdx_post_value( 'mdx_logo_way' ) ) );
+		mdx_update_option( 'mdx_logo', esc_url_raw( $mdx_post_value( 'mdx_logo' ) ) );
+		mdx_update_option( 'mdx_logo_text', sanitize_text_field( $mdx_post_value( 'mdx_logo_text' ) ) );
+		mdx_update_option( 'mdx_safari', sanitize_text_field( $mdx_post_value( 'mdx_safari' ) ) );
+		mdx_update_option( 'mdx_svg', esc_url_raw( $mdx_post_value( 'mdx_svg' ) ) );
+		mdx_update_option( 'mdx_svg_color', sanitize_text_field( $mdx_post_value( 'mdx_svg_color' ) ) );
+		mdx_update_option( 'mdx_tags_color', sanitize_text_field( $mdx_post_value( 'mdx_tags_color' ) ) );
+		mdx_update_option( 'mdx_styles_footer', sanitize_text_field( $mdx_post_value( 'mdx_styles_footer' ) ) );
+		if ( $mdx_post_value( 'mdx_footer_say' ) === 'jkrQnlLIIa6K4b$DuR' ) {
 			mdx_update_option( 'mdx_hide_footer', mdx_get_option( 'mdx_hide_footer' ) === 'true' ? 'false' : 'true' );
 		} else {
-			mdx_update_option( 'mdx_footer_say', htmlentities( stripslashes( $_POST['mdx_footer_say'] ) ) );
+			mdx_update_option( 'mdx_footer_say', htmlentities( stripslashes( $mdx_post_value( 'mdx_footer_say' ) ) ) );
 		}
-		mdx_update_option( 'mdx_footer', htmlentities( stripslashes( $_POST['mdx_footer'] ) ) );
-        mdx_update_option( 'mdx_friendly_links_style', sanitize_text_field( $_POST['mdx_friendly_links_style'] ) );
+		mdx_update_option( 'mdx_footer', htmlentities( stripslashes( $mdx_post_value( 'mdx_footer' ) ) ) );
+        mdx_update_option( 'mdx_friendly_links_style', sanitize_text_field( $mdx_post_value( 'mdx_friendly_links_style' ) ) );
 		?>
         <div class="notice notice-success is-dismissible">
             <p><?php _e( '设置已保存。', 'mdx' ); ?></p>
@@ -352,6 +360,17 @@ wp_enqueue_script( 'wp-color-picker' );
                         <label><input class="mdx-index-head-style-input" type="radio" name="mdx_index_head_style" value="slide" <?php if ( $mdx_v_index_head_style == 'slide' ){ ?>checked="checked"<?php } ?>> <?php _e( '幻灯片', 'mdx' ); ?>
                         </label><br>
                         <p class="description"><?php _e( '指定首页头部展示的内容。在下方进行详细设置。', 'mdx' ); ?></p>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr class="mdx_index_head_style_saying">
+                <th scope="row"><?php _e( '显示首页格言', 'mdx' ); ?></th>
+                <td>
+                    <?php $mdx_v_index_say_enabled = mdx_get_option( 'mdx_index_say_enabled' ); ?>
+                    <fieldset>
+                        <label><input type="radio" name="mdx_index_say_enabled" value="true" <?php if ( $mdx_v_index_say_enabled == 'true' ){ ?>checked="checked"<?php } ?>> <?php echo $trueon; ?></label><br>
+                        <label><input type="radio" name="mdx_index_say_enabled" value="false" <?php if ( $mdx_v_index_say_enabled == 'false' ){ ?>checked="checked"<?php } ?>> <?php echo $falseoff; ?></label><br>
+                        <p class="description"><?php _e( '关闭后，首页头部不再显示格言。双栏首页仍会保留博客名称。', 'mdx' ); ?></p>
                     </fieldset>
                 </td>
             </tr>

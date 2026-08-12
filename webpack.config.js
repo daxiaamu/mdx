@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const mdxVersion = '2.0.4';
+const mdxVersion = require('./package.json').version;
 
 module.exports = {
     entry: {
@@ -35,12 +35,14 @@ module.exports = {
     },
     // devtool: 'source-map',
     mode: 'production',
+    cache: {
+        type: 'filesystem'
+    },
     module: {
         rules: [
             {
                 test: /\.(less|css)$/,
                 use: [
-                    'cache-loader',
                     MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
@@ -55,35 +57,23 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: [
-                    'cache-loader',
                     'babel-loader'
                 ],
                 exclude: /(node_modules|bower_components)/
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: '../img/social-icons',
-                            publicPath: './img/social-icons',
-                            name: '[name].[ext]',
-                        }
-                    }
-                ]
+                type: 'asset/resource',
+                generator: {
+                    filename: '../img/social-icons/[name][ext]'
+                }
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: '../fonts/',
-                            name: '[name].[ext]',
-                        }
-                    }
-                ]
+                type: 'asset/resource',
+                generator: {
+                    filename: '../fonts/[name][ext]'
+                }
             }
         ]
     },
@@ -93,7 +83,7 @@ module.exports = {
         }),
         new webpack.BannerPlugin({
             banner: `/*
-Theme Name: MDx
+Theme Name: MDx Next
 Theme URI: https://flyhigher.top/develop/788.html
 Description: MDx - Material Design 风格的 WordPress 主题
 Version: ${mdxVersion}

@@ -15,7 +15,7 @@ wp_enqueue_media();
 		global $files_root;
 		if ( mdx_get_option( 'mdx_post_def_img_url' ) === $files_root . '/img/dpic.jpg' ) {
 			if ( $_POST['mdx_use_cdn'] === 'jsdelivr' ) {
-				mdx_update_option( 'mdx_post_def_img_url', esc_url_raw( 'https://cdn.jsdelivr.net/gh/yrccondor/mdx@' . $cdn_commit_version . '/img/dpic.jpg' ) );
+				mdx_update_option( 'mdx_post_def_img_url', esc_url_raw( 'https://cdn.jsdelivr.net/gh/daxiaamu/mdx@' . $cdn_commit_version . '/img/dpic.jpg' ) );
 			} else if ( $_POST['mdx_use_cdn'] === 'custom' ) {
 				mdx_update_option( 'mdx_post_def_img_url', esc_url_raw( mdx_get_option( 'mdx_custom_cdn_root' ) . '/img/dpic.jpg' ) );
 			} else {

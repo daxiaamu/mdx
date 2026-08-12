@@ -100,7 +100,7 @@ require 'plugin-update-checker/plugin-update-checker.php';
 $mdxUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
     'https://cdn.jsdelivr.net/gh/axton-the-robot/mdx-assets@latest/info.json',
     __FILE__,
-    'mdx'
+    'mdx-next'
 );
 
 //多语言支持
@@ -127,7 +127,7 @@ $files_root = '';
 if (mdx_get_option("mdx_use_cdn") === "custom") {
     $files_root = mdx_get_option("mdx_custom_cdn_root");
 } else if (mdx_get_option("mdx_use_cdn") === "jsdelivr") {
-    $files_root = 'https://cdn.jsdelivr.net/gh/yrccondor/mdx@'.$cdn_commit_version;
+    $files_root = 'https://cdn.jsdelivr.net/gh/daxiaamu/mdx@'.$cdn_commit_version;
 } else {
     $files_root = get_template_directory_uri();
 }
@@ -454,7 +454,7 @@ function mdx_blogroll_inner_meta_box($post) {
 
 function mdx_blogroll_save_meta_box($link_rel) {
     $rel = trim(str_replace('nofollow', '', $link_rel));
-    if ($_POST['mdx_blogroll_nofollow_checkbox'])
+    if (!empty($_POST['mdx_blogroll_nofollow_checkbox']))
         $rel .= ' nofollow';
     return trim($rel);
 }
@@ -925,15 +925,25 @@ function create_meta_box() {
 add_action('admin_menu', 'create_meta_box');
 
 function mdx_save_postdata_1($post_id, $post) {
-    if (!$_POST['informations_noncename'] || !wp_verify_nonce($_POST['informations_noncename'], plugin_basename(__FILE__))) {
-        return $post->ID;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return $post_id;
     }
-    if ('page' == $_POST['post_type']) {
+
+    if (wp_is_post_revision($post_id) || !isset($_POST['informations_noncename'])) {
+        return $post_id;
+    }
+
+    $nonce = sanitize_text_field(wp_unslash($_POST['informations_noncename']));
+    if (!wp_verify_nonce($nonce, plugin_basename(__FILE__))) {
+        return $post_id;
+    }
+
+    if ('page' === get_post_type($post_id)) {
         if (!current_user_can('edit_page', $post_id))
-            return $post->ID;
+            return $post_id;
     } else {
         if (!current_user_can('edit_post', $post_id))
-            return $post->ID;
+            return $post_id;
     }
     $data = $_POST["informations_value"];
     if (!add_post_meta((int)$post_id, "informations_value", (string)$data, true)) {

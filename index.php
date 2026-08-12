@@ -76,7 +76,9 @@ if(mdx_get_option('mdx_index_head_style') === "slide"){
     <?php }
     if(mdx_get_option('mdx_index_head_style') !== "slide"){ ?>
     <div class="theFirstPageSay mdui-valign mdui-typo mdui-text-color-white-text">
+        <?php if(mdx_get_option('mdx_index_say_enabled') !== 'false'){ ?>
         <h<?php if(mdx_get_option('mdx_index_say_size')!==""){echo mdx_get_option('mdx_index_say_size');}else{echo '1';}?> class="mdui-center" id="theFirstPageSayContent"><?php echo esc_attr(mdx_get_option('mdx_index_say'))?></h<?php if(mdx_get_option('mdx_index_say_size')!==""){echo mdx_get_option('mdx_index_say_size');}else{echo '1';}?>>
+        <?php } ?>
         <div class="mdx-tworows-title">
             <div>
                 <span class="mdui-text-color-theme"><?php
@@ -99,8 +101,10 @@ if(mdx_get_option('mdx_index_head_style') === "slide"){
                         }
                     }
                 ?></span>
+                <?php if(mdx_get_option('mdx_index_say_enabled') !== 'false'){ ?>
                 <hr>
                 <?php echo esc_attr(mdx_get_option('mdx_index_say'))?>
+                <?php } ?>
             </div>
         </div>
     </div>

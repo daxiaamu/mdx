@@ -1,4 +1,4 @@
-<div align="right">Language: <a title="English" href="https://github.com/yrccondor/mdx/blob/master/README.md">English</a> | Chinese | <a title="Turkish" href="https://github.com/yrccondor/mdx/blob/master/README/tr_TR.md">Turkish</a></div>
+<div align="right">Language: <a title="English" href="https://github.com/daxiaamu/mdx/blob/master/README.md">English</a> | Chinese | <a title="Turkish" href="https://github.com/daxiaamu/mdx/blob/master/README/tr_TR.md">Turkish</a></div>
 
 <br>
 
@@ -15,7 +15,7 @@
 <a href="https://flyhigher.top"><img alt="Author" src="https://img.shields.io/badge/author-Axton-red.svg?style=flat-square"/></a>
 <img alt="WordPress" src="https://img.shields.io/badge/WordPress-5.0%2B-blue.svg?style=flat-square"/>
 <a href="https://mdx.flyhigher.top"><img alt="Download" src="https://img.shields.io/badge/download-2.49M-brightgreen.svg?style=flat-square"/></a>
-<a href="https://github.com/yrccondor/mdx/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-GPL%20V3.0-orange.svg?style=flat-square"/></a>
+<a href="https://github.com/daxiaamu/mdx/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-GPL%20V3.0-orange.svg?style=flat-square"/></a>
 <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fyrccondor%2Fmdx?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fyrccondor%2Fmdx.svg?type=shield"/></a>
 </p>
 
@@ -63,7 +63,7 @@ MDx，一款轻快、优雅且强大的 Material Design 风格 WordPress 主题�
 
 你可以前往 [这里](https://mdx.flyhigher.top) 下载 MDx。
 
-你也可以前往 [Releases](https://github.com/yrccondor/mdx/releases) 页下载 MDx。**请不要为了下载而 `clone` 这个仓库。**
+你也可以前往 [Releases](https://github.com/daxiaamu/mdx/releases) 页下载 MDx。**请不要为了下载而 `clone` 这个仓库。**
 
 
 ## 国际化
@@ -88,7 +88,7 @@ MDx 支持多语言，默认语言为简体中文。
 
 ## 许可证
 
-<a href="https://github.com/yrccondor/mdx/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-GPL%20V3.0-orange.svg?style=flat-square"/></a>
+<a href="https://github.com/daxiaamu/mdx/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-GPL%20V3.0-orange.svg?style=flat-square"/></a>
 
 根据 GPL V3.0 许可证开源。
 

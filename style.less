@@ -2,7 +2,7 @@ body, html {
     min-height: 100%;
 }
 body {
-    font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC", Arial, sans-serif;
 }
 body.mdui-theme-primary-red {
     --mdx-theme-color: 244, 67, 54;
@@ -1432,7 +1432,6 @@ body.mdx-first-simple div.main .mdx-hot-posts h3 {
     user-select: none;
     will-change: box-shadow;
     -webkit-user-drag: none;
-    color: rgb(var(--mdx-text-color));
     background-color: rgb(var(--mdx-theme-color-with-white));
 }
 #submit:hover {
@@ -2113,7 +2112,6 @@ li.menu-item i.mdui-icon {
     font-size: 22px;
 }
 #comments-navi span, li.current-menu-item, li.current-menu-item i.mdui-icon, li.current_page_item, li.current_page_item i.mdui-icon, .mdx-toc-item.mdui-list-item-active, .mdx-side-title span, #mdx-cookie-notice i.mdui-icon {
-    color: rgb(var(--mdx-theme-color)) !important;
 }
 body.mdui-theme-primary-grey #comments-navi span, body.mdui-theme-primary-grey li.current-menu-item, body.mdui-theme-primary-grey li.current-menu-item i.mdui-icon, body.mdui-theme-primary-grey li.current_page_item, body.mdui-theme-primary-grey li.current_page_item i.mdui-icon, body.mdui-theme-primary-grey.mdui-theme-layout-dark #comments-navi span, body.mdui-theme-primary-grey.mdui-theme-layout-dark li.current-menu-item i.mdui-icon, body.mdui-theme-primary-grey.mdui-theme-layout-dark li.current_page_item i.mdui-icon, body.mdui-theme-primary-gery .mdx-toc-item.mdui-list-item-active, body.mdui-theme-primary-grey .mdx-side-title span, body.mdui-theme-primary-grey #mdx-cookie-notice i.mdui-icon {
     color: #9e9e9e !important;
@@ -3150,7 +3148,6 @@ img.avatar.mdx-avatar-lazyload.lazyloaded {
     background: #666;
 }
 .m-title:hover:after {
-    background-color: rgb(var(--mdx-theme-color));
 }
 body.mdui-theme-accent-red .mdx-timeline-archives li a:hover .atitle:after {
     background-color: #ff5252;
@@ -5432,4 +5429,892 @@ img.wp-smiley {
     body.mdx-reduce-motion .mdui-menu, body.mdx-reduce-motion .mdui-dialog {
         transform: none;
     }
+}
+// MDx Next modern visual refresh
+body {
+    --mdx-surface: #fff;
+    --mdx-page-background: #f6f7f9;
+    --mdx-surface-border: rgba(20, 30, 55, .08);
+    --mdx-surface-shadow: 0 2px 8px rgba(20, 30, 55, .06);
+    --mdx-surface-shadow-hover: 0 8px 24px rgba(20, 30, 55, .1);
+    --mdx-secondary-text: rgba(27, 31, 36, .68);
+}
+body.mdui-theme-layout-dark {
+    --mdx-surface: #1a1c20;
+    --mdx-page-background: #111318;
+    --mdx-surface-border: rgba(255, 255, 255, .09);
+    --mdx-surface-shadow: 0 2px 10px rgba(0, 0, 0, .22);
+    --mdx-surface-shadow-hover: 0 8px 26px rgba(0, 0, 0, .3);
+    --mdx-secondary-text: rgba(255, 255, 255, .68);
+}
+.main, .main-in-other {
+    background-color: var(--mdx-page-background);
+}
+body.mdui-theme-layout-dark .main, body.mdui-theme-layout-dark .main-in-other {
+    background-color: var(--mdx-page-background);
+}
+.postList {
+    padding-top: 24px;
+}
+.postDiv.mdui-card {
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 12px;
+    background-color: var(--mdx-surface);
+    box-shadow: var(--mdx-surface-shadow) !important;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.postDiv.mdui-card .mdui-card-actions {
+    padding: 20px 24px 16px;
+}
+.ainList > h1 {
+    margin: 4px 0 12px;
+    font-size: clamp(24px, 2.2vw, 30px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -.01em;
+}
+p.ct1-p {
+    margin: 0 0 14px;
+    padding: 0;
+    color: var(--mdx-secondary-text);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.75;
+    opacity: 1;
+}body.mdui-theme-layout-dark p.ct1-p {
+    color: var(--mdx-secondary-text) !important;
+}
+.info {
+    color: var(--mdx-secondary-text);
+    font-size: 13px;
+    opacity: .72;
+}
+.coun-read.mdui-text-color-theme-accent {
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0;
+    transition: background-color .2s ease, transform .2s ease;
+}
+.coun-read.mdui-text-color-theme-accent:hover {
+    background-color: rgba(var(--mdx-theme-color), .15);
+}
+article p {
+    line-height: 1.75;
+}
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+    outline: 3px solid rgba(var(--mdx-theme-color), .42);
+    outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+    .postDiv.mdui-card:hover {
+        border-color: rgba(var(--mdx-theme-color), .18);
+        box-shadow: var(--mdx-surface-shadow-hover) !important;
+        transform: translateY(-2px);
+    }
+    .coun-read.mdui-text-color-theme-accent:hover {
+        transform: translateY(-1px);
+    }
+}
+@media (max-width: 600px) {
+    .postList {
+        padding-top: 12px;
+    }
+    .postDiv.mdui-card {
+        margin-top: 7px;
+        margin-bottom: 7px;
+        border-radius: 10px;
+    }
+    .postDiv.mdui-card .mdui-card-actions {
+        padding: 17px 18px 14px;
+    }
+    .ainList > h1 {
+        font-size: 22px;
+        line-height: 1.4;
+    }
+    p.ct1-p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+}
+// MDx Next modern visual refresh - phase 2
+.PostTitle > h1, .PostTitlePage {
+    font-weight: 600;
+}
+.titleBarGobal.mdui-shadow-2, #titleBar.mdui-shadow-2, #titleBarinPost.mdui-shadow-2 {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .08), 0 6px 18px rgba(20, 30, 55, .08) !important;
+}
+.mdui-toolbar {
+    min-height: 60px;
+}
+.mdui-toolbar > .mdui-typo-headline {
+    font-weight: 600;
+    letter-spacing: -.01em;
+}
+#left-drawer {
+    border-right: 1px solid var(--mdx-surface-border);
+    background-color: var(--mdx-surface);
+    box-shadow: 8px 0 28px rgba(20, 30, 55, .08);
+}
+body.mdui-theme-layout-dark #left-drawer {
+    border-right-color: var(--mdx-surface-border);
+    background-color: var(--mdx-surface) !important;
+    box-shadow: 8px 0 28px rgba(0, 0, 0, .24);
+}
+#mdx_menu > li {
+    overflow: hidden;
+    margin: 3px 10px;
+    border-radius: 10px;
+}
+#mdx_menu > li > a {
+    padding-right: 14px;
+    padding-left: 14px;
+}
+#mdx_menu > li:not(.current-menu-item):not(.current_page_item) > a:hover {
+    background-color: rgba(var(--mdx-theme-color), .07);
+}
+#mdx_menu > li.current-menu-item, #mdx_menu > li.current_page_item {
+    background-color: rgba(var(--mdx-theme-color), .11);
+}
+.mdui-btn:not(.mdui-btn-icon):not(.coun-read) {
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: .01em;
+}
+.mdui-textfield-input, input[type="text"], input[type="email"], input[type="url"], input[type="search"], input[type="password"], textarea, select {
+    border-radius: 8px;
+}
+.mdxNotice {
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 12px !important;
+    box-shadow: var(--mdx-surface-shadow);
+}
+.mdui-divider {
+    background-color: var(--mdx-surface-border);
+}
+.foot {
+    border-top: 1px solid var(--mdx-surface-border);
+    background-color: var(--mdx-page-background);
+    color: var(--mdx-secondary-text);
+}
+body.mdui-theme-layout-dark .foot {
+    border-top-color: var(--mdx-surface-border);
+    background-color: var(--mdx-page-background);
+    color: var(--mdx-secondary-text);
+}
+.foot a, body.mdui-theme-layout-dark .foot a {
+    color: inherit;
+    text-underline-offset: 3px;
+}
+article.mdui-typo h1, article.mdui-typo h2, article.mdui-typo h3, article.mdui-typo h4 {
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -.012em;
+}
+article.mdui-typo h2 {
+    margin-top: 1.8em;
+}
+article.mdui-typo h3 {
+    margin-top: 1.55em;
+}
+article.mdui-typo blockquote {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 14px 18px;
+    border-left: 4px solid rgb(var(--mdx-theme-color));
+    border-radius: 0 10px 10px 0;
+    background-color: rgba(var(--mdx-theme-color), .06);
+}
+article img:not(.wp-smiley), .PostMainImg, .PostMainImg0 {
+    border-radius: 10px;
+}
+@media (min-width: 721px) {
+    .ArtMain0 {
+        overflow: hidden;
+        border: 1px solid var(--mdx-surface-border);
+        border-radius: 14px;
+        background-color: var(--mdx-surface);
+        box-shadow: var(--mdx-surface-shadow);
+    }
+    body.mdui-theme-layout-dark .ArtMain0 {
+        background-color: var(--mdx-surface);
+    }
+}
+@media (max-width: 600px) {
+    .mdui-toolbar {
+        min-height: 56px;
+    }
+    #mdx_menu > li {
+        margin-right: 8px;
+        margin-left: 8px;
+    }
+    .mdxNotice {
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0 !important;
+    }
+}
+// MDx Next modern notice
+.mdxNotice {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    overflow: hidden;
+    padding: 16px 18px;
+    border: 1px solid rgba(var(--mdx-theme-color), .16);
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, rgba(var(--mdx-theme-color), .1), rgba(var(--mdx-theme-color), .035)), var(--mdx-surface) !important;
+    box-shadow: 0 3px 14px rgba(20, 30, 55, .07);
+    color: rgba(27, 31, 36, .82);
+    font-size: 15px;
+    line-height: 1.7;
+}
+.mdxNotice::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    content: "";
+}
+.mdxNotice > i.mdui-icon {
+    display: inline-flex;
+    flex: 0 0 38px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 38px;
+    height: 38px;
+    margin: 0;
+    border-radius: 50%;
+    background-color: rgba(var(--mdx-theme-color), .13);
+    color: rgb(var(--mdx-theme-color));
+    font-size: 21px;
+    opacity: 1;
+}
+.mdxNotice > p.mdui-typo {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    margin: 5px 0 0;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.mdxNotice > p.mdui-typo > :first-child {
+    margin-top: 0;
+}
+.mdxNotice > p.mdui-typo > :last-child {
+    margin-bottom: 0;
+}
+.mdxNotice a {
+    color: rgb(var(--mdx-theme-color));
+    font-weight: 600;
+    text-decoration: none;
+}
+.mdxNotice a:hover,
+.mdxNotice a:focus-visible {
+    color: rgb(var(--mdx-theme-color));
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--mdx-theme-color), .38);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+body.mdui-theme-layout-dark .mdxNotice {
+    border-color: rgba(var(--mdx-theme-color), .24);
+    background: linear-gradient(135deg, rgba(var(--mdx-theme-color), .18), rgba(var(--mdx-theme-color), .06)), var(--mdx-surface) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .24);
+    color: rgba(255, 255, 255, .82) !important;
+}
+body.mdx-first-tworows .mdxNotice {
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0 !important;
+}
+@media (max-width: 770px) {
+    .mdxNotice {
+        gap: 11px;
+        padding: 14px 16px;
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0 !important;
+        font-size: 14px;
+    }
+    .mdxNotice > i.mdui-icon {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+        font-size: 19px;
+    }
+    .mdxNotice > p.mdui-typo {
+        margin-top: 3px;
+    }
+}
+// MDx Next modern reading and interaction UI
+.outOfSearch {
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, .16);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .12);
+    backdrop-filter: blur(16px);
+}
+.seainput {
+    font-weight: 400;
+    letter-spacing: 0;
+}
+.mdui-dialog {
+    overflow: hidden;
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 16px;
+    background-color: var(--mdx-surface);
+    box-shadow: 0 22px 60px rgba(20, 30, 55, .2);
+}
+body.mdui-theme-layout-dark .mdui-dialog {
+    background-color: var(--mdx-surface);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .45);
+}
+.mdui-dialog-title {
+    font-weight: 600;
+    letter-spacing: -.01em;
+}
+.mdui-snackbar {
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 12px;
+    background-color: rgba(30, 32, 36, .96);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, .24);
+    backdrop-filter: blur(12px);
+}
+#comments .mdui-list-item {
+    margin-bottom: 10px;
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 12px;
+    background-color: var(--mdx-surface);
+    transition: border-color .2s ease, background-color .2s ease;
+}
+#comments .mdui-list-item:hover {
+    border-color: rgba(var(--mdx-theme-color), .18);
+    background-color: rgba(var(--mdx-theme-color), .025);
+}
+#comments .mdui-list-item p.mdui-typo {
+    line-height: 1.7;
+}
+#comments .mdui-list-item-avatar {
+    overflow: hidden;
+    border: 2px solid var(--mdx-surface);
+    box-shadow: 0 0 0 1px var(--mdx-surface-border);
+}
+#respond, .mdx-comment-login-needed {
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 12px;
+    background-color: var(--mdx-surface);
+    box-shadow: var(--mdx-surface-shadow);
+}
+#commentform textarea, #commentform input[type="text"], #commentform input[type="email"], #commentform input[type="url"] {
+    border: 1px solid var(--mdx-surface-border);
+    background-color: rgba(127, 127, 127, .04);
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+#commentform textarea:focus, #commentform input[type="text"]:focus, #commentform input[type="email"]:focus, #commentform input[type="url"]:focus {
+    border-color: rgba(var(--mdx-theme-color), .48);
+    background-color: var(--mdx-surface);
+}
+#comments-navi a, #comments-navi span.page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    margin: 3px;
+    padding: 0 10px;
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 9px;
+    background-color: var(--mdx-surface);
+    box-shadow: none;
+}
+#comments-navi span.page-numbers, #comments-navi a:hover {
+    border-color: rgba(var(--mdx-theme-color), .25);
+    background-color: rgba(var(--mdx-theme-color), .1);
+}
+.page-footer-nav {
+    border-top: 1px solid rgba(255, 255, 255, .12);
+}
+.page-footer-nav-left, .page-footer-nav-right {
+    transition: background-color .2s ease;
+}
+.page-footer-nav-left:hover, .page-footer-nav-right:hover {
+    background-color: rgba(255, 255, 255, .08);
+}
+article.mdui-typo pre {
+    margin: 1.4em 0;
+    padding: 18px 20px;
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 12px;
+    background-color: #17191d;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04);
+    color: #e6e8eb;
+    font-size: 14px;
+    line-height: 1.65;
+    tab-size: 4;
+}
+article.mdui-typo :not(pre) > code {
+    padding: .16em .42em;
+    border: 1px solid rgba(var(--mdx-theme-color), .12);
+    border-radius: 5px;
+    background-color: rgba(var(--mdx-theme-color), .07);
+    color: rgb(var(--mdx-theme-color));
+    font-size: .9em;
+}
+article div.mdui-table-fluid {
+    overflow: hidden;
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 12px;
+    box-shadow: none;
+}
+article .mdui-table th {
+    background-color: rgba(var(--mdx-theme-color), .06);
+    font-weight: 600;
+}
+article .mdui-table tr:not(:last-child) td, article .mdui-table tr:not(:last-child) th {
+    border-bottom-color: var(--mdx-surface-border);
+}
+#mdx-toc .mdx-toc-item {
+    margin: 2px 8px;
+    border-radius: 8px;
+}
+#mdx-toc .mdx-toc-item:hover {
+    background-color: rgba(var(--mdx-theme-color), .07);
+}
+@media (max-width: 600px) {
+    .mdui-dialog {
+        border-radius: 14px;
+    }
+    #comments .mdui-list-item {
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+    }
+    article.mdui-typo pre {
+        margin-right: -12px;
+        margin-left: -12px;
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+    }
+}
+// MDx Next modern article tables and quotations
+article.mdui-typo blockquote:not(.mdx-warning),
+article .wp-block-quote:not(.mdx-warning) {
+    position: relative;
+    overflow: hidden;
+    margin: 1.5em 0;
+    padding: 18px 22px;
+    border: 1px solid rgba(var(--mdx-theme-color), .14);
+    border-left: 4px solid rgb(var(--mdx-theme-color));
+    border-radius: 0 11px 11px 0;
+    background: linear-gradient(135deg, rgba(var(--mdx-theme-color), .075), rgba(var(--mdx-theme-color), .025));
+    box-shadow: none;
+    color: var(--mdx-secondary-text);
+    line-height: 1.75;
+}
+article.mdui-typo blockquote:not(.mdx-warning)::after,
+article .wp-block-quote:not(.mdx-warning)::after {
+    position: absolute;
+    top: -10px;
+    right: 12px;
+    color: rgba(var(--mdx-theme-color), .08);
+    content: "\201C";
+    font-family: Georgia, serif;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    pointer-events: none;
+}
+article.mdui-typo blockquote:not(.mdx-warning) > :first-child,
+article .wp-block-quote:not(.mdx-warning) > :first-child {
+    margin-top: 0;
+}
+article.mdui-typo blockquote:not(.mdx-warning) > :last-child,
+article .wp-block-quote:not(.mdx-warning) > :last-child {
+    margin-bottom: 0;
+}
+article.mdui-typo blockquote cite,
+article .wp-block-quote cite {
+    display: block;
+    margin-top: 10px;
+    color: var(--mdx-secondary-text);
+    font-size: .88em;
+    font-style: normal;
+}
+article.mdui-typo blockquote cite::before,
+article .wp-block-quote cite::before {
+    content: "— ";
+}
+article div.mdui-table-fluid,
+article figure.wp-block-table {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 1.5em 0;
+    border: 1px solid var(--mdx-surface-border);
+    border-radius: 11px;
+    background-color: var(--mdx-surface);
+    box-shadow: none;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+article figure.wp-block-table table,
+article table.mdui-table {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: transparent;
+}
+article figure.wp-block-table th,
+article figure.wp-block-table td,
+article .mdui-table th,
+article .mdui-table td {
+    min-width: 90px;
+    padding: 12px 15px;
+    border-width: 0 0 1px;
+    border-style: solid;
+    border-color: var(--mdx-surface-border);
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.6;
+}
+article figure.wp-block-table th,
+article .mdui-table th {
+    background-color: rgba(var(--mdx-theme-color), .07);
+    color: inherit;
+    font-weight: 600;
+    white-space: nowrap;
+}
+article figure.wp-block-table tbody tr,
+article .mdui-table tbody tr {
+    transition: background-color .18s ease;
+}
+article figure.wp-block-table tbody tr:nth-child(even),
+article .mdui-table tbody tr:nth-child(even) {
+    background-color: rgba(127, 127, 127, .025);
+}
+article figure.wp-block-table tbody tr:hover,
+article .mdui-table tbody tr:hover {
+    background-color: rgba(var(--mdx-theme-color), .055);
+}
+article figure.wp-block-table tr:last-child > *,
+article .mdui-table tr:last-child > * {
+    border-bottom: 0;
+}
+article figure.wp-block-table figcaption,
+article table.mdui-table caption {
+    padding: 10px 14px;
+    color: var(--mdx-secondary-text);
+    font-size: .88em;
+    text-align: left;
+}
+@media (max-width: 600px) {
+    article.mdui-typo blockquote:not(.mdx-warning),
+    article .wp-block-quote:not(.mdx-warning) {
+        padding: 15px 17px;
+    }
+    article figure.wp-block-table th,
+    article figure.wp-block-table td,
+    article .mdui-table th,
+    article .mdui-table td {
+        padding: 10px 12px;
+    }
+}
+// MDx Next modern comment composer and share dialog actions
+#respond {
+    overflow: hidden;
+    padding: 26px 24px 18px;
+}
+#reply-title {
+    margin-bottom: 8px;
+    color: inherit;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+#commentform,
+#commentform .mdui-textfield {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+#commentform textarea.mdui-textfield-input,
+#commentform input.mdui-textfield-input {
+    display: block;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100%;
+    border: 1px solid var(--mdx-surface-border) !important;
+    border-radius: 9px;
+    outline: none !important;
+    background-color: rgba(127, 127, 127, .035);
+    box-shadow: none;
+}
+#commentform textarea.mdui-textfield-input {
+    min-height: 112px;
+    padding: 14px 15px;
+    line-height: 1.65;
+    resize: vertical;
+}
+#commentform input.mdui-textfield-input {
+    min-height: 44px;
+    padding: 8px 12px;
+}
+#commentform .mdui-textfield-error {
+    color: #d32f2f;
+}
+#commentform .logged-in-as {
+    margin: 6px 0 4px;
+    color: var(--mdx-secondary-text);
+}
+#commentform .logged-in-as a {
+
+}
+#commentform .form-submit {
+    margin: 10px 0 0;
+}
+#commentform #submit {
+    min-width: 96px;
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 9px;
+
+    box-shadow: none;
+
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 38px;
+    text-transform: none;
+}
+#commentform #submit:hover,
+#commentform #submit:focus-visible {
+
+    opacity: .92;
+}
+.mdx-share-img-dialog .mdui-dialog-actions {
+    min-height: 52px;
+    padding: 8px 10px;
+    border-top: 1px solid var(--mdx-surface-border);
+}
+.mdx-share-img-dialog .mdui-dialog-actions .mdui-btn {
+    margin-left: 6px;
+    padding: 0 13px;
+    border-radius: 8px;
+
+    font-weight: 500;
+}
+.mdx-share-img-dialog .mdx-save-info {
+    color: var(--mdx-secondary-text);
+    opacity: 1;
+}
+@media (max-width: 600px) {
+    #respond {
+        padding: 22px 16px 14px;
+    }}
+// MDx Next r11 restrained technical archive system
+body {
+    --mdx-radius-control: 8px;
+    --mdx-radius-surface: 10px;
+    --mdx-radius-dialog: 12px;
+    --mdx-shadow-raised: 0 2px 8px rgba(20, 30, 55, .06);
+    --mdx-shadow-overlay: 0 8px 24px rgba(20, 30, 55, .16);
+    --mdx-motion-fast: 150ms;
+}
+body.mdui-theme-layout-dark {
+    --mdx-shadow-raised: 0 2px 10px rgba(0, 0, 0, .22);
+    --mdx-shadow-overlay: 0 8px 24px rgba(0, 0, 0, .38);
+}
+.postDiv.mdui-card,
+.ArtMain0,
+#respond,
+.mdx-comment-login-needed,
+#comments .mdui-list-item {
+    border-radius: var(--mdx-radius-surface);
+    box-shadow: var(--mdx-shadow-raised) !important;
+}
+.postDiv.mdui-card {
+    transition: border-color var(--mdx-motion-fast) ease-out, box-shadow var(--mdx-motion-fast) ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+    .postDiv.mdui-card:hover {
+        box-shadow: 0 4px 14px rgba(20, 30, 55, .09) !important;
+        transform: none;
+    }
+    body.mdui-theme-layout-dark .postDiv.mdui-card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, .3) !important;
+    }
+}
+.ainList > h1 {
+    font-weight: 400;
+}
+.coun-read.mdui-text-color-theme-accent {
+    border-radius: var(--mdx-radius-control);
+    background-color: transparent !important;
+    font-weight: 500;
+    transition: background-color var(--mdx-motion-fast) ease-out;
+}
+.coun-read.mdui-text-color-theme-accent:hover,
+.coun-read.mdui-text-color-theme-accent:focus-visible {
+    background-color: rgba(127, 127, 127, .1) !important;
+    transform: none;
+}
+.PostTitle > h1,
+.PostTitlePage,
+.mdx-clean-style-article-title {
+    font-size: clamp(32px, 3.2vw, 40px);
+    font-weight: 500;
+    line-height: 1.22;
+    letter-spacing: -.015em;
+}
+article.mdui-typo a:not(.mdui-btn):not(.mdx-img-in-post-with-link) {
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+article.mdui-typo a:not(.mdui-btn):not(.mdx-img-in-post-with-link):hover {
+    text-decoration-thickness: 2px;
+}
+.mdui-btn:not(.mdui-btn-icon),
+.mdui-textfield-input,
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="password"],
+textarea,
+select {
+    border-radius: var(--mdx-radius-control);
+}
+.mdui-dialog {
+    border-radius: var(--mdx-radius-dialog);
+    box-shadow: var(--mdx-shadow-overlay);
+}
+body.mdui-theme-layout-dark .mdui-dialog {
+    box-shadow: var(--mdx-shadow-overlay);
+}
+article.mdui-typo blockquote:not(.mdx-warning),
+article .wp-block-quote:not(.mdx-warning),
+article div.mdui-table-fluid,
+article figure.wp-block-table {
+    border-radius: var(--mdx-radius-surface);
+}
+article.mdui-typo blockquote:not(.mdx-warning)::after,
+article .wp-block-quote:not(.mdx-warning)::after {
+    content: none;
+}
+article.mdui-typo blockquote:not(.mdx-warning),
+article .wp-block-quote:not(.mdx-warning) {
+    background: rgba(var(--mdx-theme-color), .055);
+}
+.spanout .mdx-share {
+    box-shadow: var(--mdx-shadow-raised) !important;
+    transition: box-shadow var(--mdx-motion-fast) ease-out, transform var(--mdx-motion-fast) ease-out;
+}
+.spanout .mdx-share:hover,
+.spanout .mdx-share:focus-visible {
+    box-shadow: var(--mdx-shadow-overlay) !important;
+    transform: translateY(-1px);
+}
+.spanout .mdx-share:active {
+    box-shadow: var(--mdx-shadow-raised) !important;
+    transform: scale(.96);
+}
+#commentform textarea.mdui-textfield-input,
+#commentform input.mdui-textfield-input {
+    border-radius: var(--mdx-radius-control);
+}
+#commentform textarea.mdui-textfield-input:focus,
+#commentform input.mdui-textfield-input:focus {
+    border-color: rgba(var(--mdx-theme-color), .56) !important;
+    box-shadow: 0 0 0 3px rgba(var(--mdx-theme-color), .11);
+}
+#commentform #submit {
+    border-radius: var(--mdx-radius-control);
+    background-color: rgb(var(--mdx-theme-color-with-white));
+    color: rgb(var(--mdx-text-color));
+    box-shadow: none;
+}
+#commentform #submit:hover,
+#commentform #submit:focus-visible {
+    box-shadow: 0 4px 12px rgba(var(--mdx-theme-color), .2);
+    opacity: 1;
+}
+.mdx-share-img-dialog .mdui-dialog-actions .mdui-btn {
+    border-radius: var(--mdx-radius-control);
+}
+@media (max-width: 600px) {
+    .PostTitle > h1,
+    .PostTitlePage,
+    .mdx-clean-style-article-title {
+        font-size: 27px;
+        font-weight: 500;
+        line-height: 1.25;
+    }
+    .postDiv.mdui-card,
+    #respond,
+    .mdx-comment-login-needed {
+        border-radius: var(--mdx-radius-surface);
+    }
+}
+// MDx Next r18 comment repair; homepage media uses original MDx behavior
+#commentform .mdx-comment-main-input {
+    padding-bottom: 18px;
+}
+#commentform .mdx-comment-main-input > textarea.mdui-textfield-input,
+#commentform .mdui-textfield > textarea.mdui-textfield-input,
+#commentform .mdui-textfield > input.mdui-textfield-input {
+    width: calc(100% - 56px) !important;
+}
+#commentform .mdx-comment-main-input > i.mdui-icon {
+    color: var(--mdx-secondary-text);
+}
+#commentform .moreInComm {
+    border-radius: 50%;
+    color: var(--mdx-secondary-text);
+    opacity: .72;
+    pointer-events: auto;
+    transition: background-color var(--mdx-motion-fast) ease-out, color var(--mdx-motion-fast) ease-out, opacity var(--mdx-motion-fast) ease-out;
+}
+#commentform .moreInComm:hover,
+#commentform .moreInComm:focus-visible {
+    background-color: rgba(127, 127, 127, .1);
+    color: inherit;
+    opacity: 1;
+}
+// Keep announcement link ink and its animated underline in one theme color.
+.mdxNotice a,
+.mdxNotice a:link,
+.mdxNotice a:visited,
+.mdxNotice a:hover,
+.mdxNotice a:focus-visible,
+.mdxNotice a:active {
+    color: rgb(var(--mdx-theme-color)) !important;
+    text-decoration: none !important;
+}
+.mdxNotice a::before {
+    background-color: currentColor !important;
+}
+// Preserve MDUI's native comment-field geometry.
+#commentform textarea.mdui-textfield-input,
+#commentform input.mdui-textfield-input {
+    border-width: 0 0 1px !important;
+    border-style: solid !important;
+    border-radius: 0 !important;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 8px 0;
+}
+#commentform textarea.mdui-textfield-input:focus,
+#commentform input.mdui-textfield-input:focus {
+    background-color: transparent;
+    box-shadow: none;
 }
